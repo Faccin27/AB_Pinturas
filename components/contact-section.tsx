@@ -56,10 +56,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Telefone</p>
-                    <a
-                      href="tel:+5549999215720"
-                      className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
-                    >
+                    <a href="tel:+5549999215720">
                       <p className="text-muted-foreground hover:text-primary hover:font-bold transition-all duration-200">
                         935 986 208
                       </p>
@@ -88,7 +85,7 @@ export function ContactSection() {
                   <div>
                     <p className="font-medium">Localização</p>
                     <p className="text-muted-foreground">
-                      Atendemos em toda a região de Porto e arredores
+                      Atendemos em toda a região de e arredores
                     </p>
                   </div>
                 </div>
