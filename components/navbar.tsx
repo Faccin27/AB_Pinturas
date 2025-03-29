@@ -29,7 +29,7 @@ export function Navbar() {
       <div className="container flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/images/logo.png" alt="AB Pinturas e Serviços" width={60} height={60} className="h-12 w-auto" />
-          <span className={cn("font-bold text-xl transition-colors", isScrolled ? "text-white" : "text-primary")}>
+          <span className={cn("font-bold text-xl transition-colors", isScrolled ? "text-primary" : "text-white")}>
             AB Pinturas
           </span>
         </Link>
@@ -41,7 +41,7 @@ export function Navbar() {
               href={`/#${item.toLowerCase()}`}
               className={cn(
                 "font-medium transition-colors hover:text-primary-foreground/80",
-                isScrolled ? "text-white" : "text-primary",
+                isScrolled ? "text-primary" : "text-white",
               )}
             >
               {item}
