@@ -85,7 +85,7 @@ export function ContactSection() {
                   <div>
                     <p className="font-medium">Localização</p>
                     <p className="text-muted-foreground">
-                      Atendemos em toda a região de e arredores
+                      Atendemos em toda a região de porto e arredores
                     </p>
                   </div>
                 </div>
