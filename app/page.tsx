@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/navbar"
-// import { HeroSection } from "@/components/hero-section"
+import { HeroSection } from "@/components/hero-section"
 // import { ServicesSection } from "@/components/services-section"
 // import { GallerySection } from "@/components/gallery-section"
 // import { AboutSection } from "@/components/about-section"
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main>
       <Navbar />
-      {/* <HeroSection /> */}
+      <HeroSection />
       {/* <ServicesSection />
       <GallerySection />
       <AboutSection />
