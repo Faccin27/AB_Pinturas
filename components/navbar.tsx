@@ -36,10 +36,7 @@ export function Navbar() {
             className="h-12 w-auto"
           />
           <span
-            className={cn(
-              "font-bold text-xl transition-colors",
-              isScrolled ? "text-primary" : "text-white"
-            )}
+            className={cn("font-bold text-xl transition-colors text-white")}
           >
             AB Pinturas
           </span>
@@ -57,8 +54,11 @@ export function Navbar() {
               {item}
             </Link>
           ))}
-          <Button size="sm" className="gap-2">
-            <Phone className="h-4 w-4" />
+          <Button
+            size="sm"
+            className="gap-2 hover:text-white/80 hover:font-bold text-white transition-all duration-200"
+          >
+            <Phone className="h-4 w-4 " />
             935 986 208
           </Button>
         </nav>
