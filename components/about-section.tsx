@@ -20,9 +20,6 @@ export function AboutSection() {
                   <Check className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Qualidade</h3>
-                </div>
-                <div>
                   <h3 className="font-medium text-foreground">Qualidade Garantida</h3>
                   <p className="text-muted-foreground">
                     Trabalhamos com materiais de primeira linha e técnicas modernas para garantir um acabamento
