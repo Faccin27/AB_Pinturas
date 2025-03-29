@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 196 100% 30%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 196 100% 30%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 196 100% 40%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 196 100% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.service-card {
+  @apply relative overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-xl;
+}
+
+.service-card::before {
+  content: "";
+  @apply absolute inset-0 bg-primary/10 opacity-0 transition-opacity duration-300;
+}
+
+.service-card:hover::before {
+  @apply opacity-100;
+}
+
+.carousel {
+  @apply relative overflow-hidden;
+}
+
+.carousel-inner {
+  @apply flex transition-transform duration-500 ease-in-out;
+}
+
+.carousel-item {
+  @apply min-w-full;
+}
+
+.carousel-indicators {
+  @apply absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2;
+}
+
+.carousel-indicator {
+  @apply h-2 w-2 rounded-full bg-white/50 transition-all duration-300;
+}
+
+.carousel-indicator.active {
+  @apply bg-white w-4;
+}
+
+.carousel-control {
+  @apply absolute top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white transition-all duration-300 hover:bg-white/40;
+}
+
+.carousel-control-prev {
+  @apply left-4;
+}
+
+.carousel-control-next {
+  @apply right-4;
+}
+
