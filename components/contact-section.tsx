@@ -1,48 +1,53 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Phone, Mail, MapPin, Send, Check } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Phone, Mail, MapPin, Send, Check } from "lucide-react";
 
 export function ContactSection() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulação de envio
     setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
+      setIsSubmitting(false);
+      setIsSubmitted(true);
 
       // Reset após 3 segundos
       setTimeout(() => {
-        setIsSubmitted(false)
-      }, 3000)
-    }, 1500)
-  }
+        setIsSubmitted(false);
+      }, 3000);
+    }, 1500);
+  };
 
   return (
     <section id="contato" className="py-20 bg-background">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Solicite um orçamento</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Solicite um orçamento
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Entre em contato conosco para solicitar um orçamento sem compromisso ou tirar suas dúvidas.
+            Entre em contato conosco para solicitar um orçamento sem compromisso
+            ou tirar suas dúvidas.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <div className="bg-primary/5 p-8 rounded-xl">
-              <h3 className="text-xl font-bold text-primary mb-6">Informações de Contato</h3>
+              <h3 className="text-xl font-bold text-primary mb-6">
+                Informações de Contato
+              </h3>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -51,7 +56,14 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Telefone</p>
-                    <p className="text-muted-foreground">935 986 208</p>
+                    <a
+                      href="tel:+5549999215720"
+                      className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                    >
+                      <p className="text-muted-foreground hover:text-primary hover:font-bold transition-all duration-200">
+                        935 986 208
+                      </p>
+                    </a>
                   </div>
                 </div>
 
@@ -61,7 +73,11 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-muted-foreground">contato@abpinturas.pt</p>
+                    <a href="mailto:gfaccin27@gmail.com">
+                      <p className="text-muted-foreground hover:text-primary hover:font-bold transition-all duration-200">
+                        contato@abpinturas.pt
+                      </p>
+                    </a>
                   </div>
                 </div>
 
@@ -71,15 +87,21 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Localização</p>
-                    <p className="text-muted-foreground">Atendemos em toda a região de Lisboa e arredores</p>
+                    <p className="text-muted-foreground">
+                      Atendemos em toda a região de Porto e arredores
+                    </p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 p-4 bg-primary/10 rounded-lg">
                 <h4 className="font-medium mb-2">Horário de Atendimento</h4>
-                <p className="text-sm text-muted-foreground">Segunda a Sexta: 8h às 18h</p>
-                <p className="text-sm text-muted-foreground">Sábado: 8h às 12h</p>
+                <p className="text-sm text-muted-foreground">
+                  Segunda a Sexta: 8h às 18h
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Sábado: 8h às 12h
+                </p>
               </div>
             </div>
           </div>
@@ -99,7 +121,12 @@ export function ContactSection() {
 
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="Seu email" required />
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="Seu email"
+                  required
+                />
               </div>
 
               <div className="space-y-2">
@@ -110,10 +137,14 @@ export function ContactSection() {
                   required
                 >
                   <option value="">Selecione um serviço</option>
-                  <option value="pintura-residencial">Pintura Residencial</option>
+                  <option value="pintura-residencial">
+                    Pintura Residencial
+                  </option>
                   <option value="pintura-comercial">Pintura Comercial</option>
                   <option value="montagem-moveis">Montagem de Móveis</option>
-                  <option value="desmontagem-moveis">Desmontagem de Móveis</option>
+                  <option value="desmontagem-moveis">
+                    Desmontagem de Móveis
+                  </option>
                   <option value="pequenos-reparos">Pequenos Reparos</option>
                   <option value="outros">Outros</option>
                 </select>
@@ -129,7 +160,12 @@ export function ContactSection() {
                 />
               </div>
 
-              <Button type="submit" className="w-full" size="lg" disabled={isSubmitting || isSubmitted}>
+              <Button
+                type="submit"
+                className="w-full"
+                size="lg"
+                disabled={isSubmitting || isSubmitted}
+              >
                 {isSubmitting ? (
                   <>
                     <svg
@@ -171,6 +207,5 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
