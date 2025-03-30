@@ -22,18 +22,18 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-[99999] transition-all duration-300",
         isScrolled ? "bg-primary shadow-md py-2" : "bg-transparent py-4"
       )}
     >
       <div className="container flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/images/logo.png"
+            src="/images/logoV.png"
             alt="AB Pinturas e Serviços"
-            width={60}
-            height={60}
-            className="h-12 w-auto"
+            width={72}
+            height={72}
+            className="h-14 w-auto"
           />
           <span
             className={cn("font-bold text-xl transition-colors text-white")}
