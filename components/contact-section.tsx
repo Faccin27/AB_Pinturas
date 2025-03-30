@@ -1,32 +1,76 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, Mail, MapPin, Send, Check } from "lucide-react";
+import emailjs from "emailjs-com";
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
 
 export function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulação de envio
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+    const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID!;
 
-      // Reset após 3 segundos
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 3000);
-    }, 1500);
+    const templateParams = {
+      from_name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(serviceId, templateId, templateParams, userId);
+      setIsSubmitted(true);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+
+      // Mantém a mensagem de sucesso por 3 segundos antes de resetar
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (error) {
+      console.error("Falha no envio...", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -90,16 +134,6 @@ export function ContactSection() {
                   </div>
                 </div>
               </div>
-
-              <div className="mt-8 p-4 bg-primary/10 rounded-lg">
-                <h4 className="font-medium mb-2">Horário de Atendimento</h4>
-                <p className="text-sm text-muted-foreground">
-                  Segunda a Sexta: 8h às 18h
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Sábado: 8h às 12h
-                </p>
-              </div>
             </div>
           </div>
 
@@ -108,19 +142,36 @@ export function ContactSection() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Nome</Label>
-                  <Input id="name" placeholder="Seu nome" required />
+                  <Input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    id="name"
+                    placeholder="Seu nome"
+                    required
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Telefone</Label>
-                  <Input id="phone" placeholder="Seu telefone" required />
+                  <Input
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    id="phone"
+                    placeholder="Seu telefone"
+                    required
+                  />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
+                  name="email"
                   id="email"
                   type="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Seu email"
                   required
                 />
@@ -129,8 +180,11 @@ export function ContactSection() {
               <div className="space-y-2">
                 <Label htmlFor="service">Serviço de Interesse</Label>
                 <select
+                  name="subject"
                   id="service"
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="form-select flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   required
                 >
                   <option value="">Selecione um serviço</option>
@@ -150,7 +204,10 @@ export function ContactSection() {
               <div className="space-y-2">
                 <Label htmlFor="message">Mensagem</Label>
                 <Textarea
+                  name="message"
                   id="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Descreva o serviço que precisa..."
                   className="min-h-[120px]"
                   required
@@ -163,41 +220,11 @@ export function ContactSection() {
                 size="lg"
                 disabled={isSubmitting || isSubmitted}
               >
-                {isSubmitting ? (
-                  <>
-                    <svg
-                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    Enviando...
-                  </>
-                ) : isSubmitted ? (
-                  <>
-                    <Check className="mr-2 h-4 w-4" />
-                    Enviado com Sucesso!
-                  </>
-                ) : (
-                  <>
-                    <Send className="mr-2 h-4 w-4" />
-                    Enviar Mensagem
-                  </>
-                )}
+                {isSubmitting
+                  ? "Enviando..."
+                  : isSubmitted
+                  ? "Enviado com Sucesso!"
+                  : "Enviar Mensagem"}
               </Button>
             </form>
           </div>
