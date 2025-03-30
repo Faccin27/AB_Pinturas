@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Star, ChevronLeft, ChevronRight } from "lucide-react"
@@ -42,8 +42,24 @@ const testimonials = [
 
 export function TestimonialsSection() {
   const [startIndex, setStartIndex] = useState(0)
-  const visibleCount = typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 3
+  const [visibleCount, setVisibleCount] = useState(3)
   const maxStartIndex = testimonials.length - visibleCount
+
+  // Handle responsive behavior with useEffect
+  useEffect(() => {
+    const handleResize = () => {
+      setVisibleCount(window.innerWidth < 768 ? 1 : 3)
+    }
+
+    // Set initial value
+    handleResize()
+
+    // Add event listener
+    window.addEventListener("resize", handleResize)
+
+    // Clean up
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   const nextSlide = () => {
     setStartIndex((prev) => Math.min(prev + 1, maxStartIndex))
@@ -55,7 +71,7 @@ export function TestimonialsSection() {
 
   return (
     <section className="py-20 bg-primary/5">
-      <div className="container">
+      <div className="container px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">O que nossos clientes dizem</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -63,47 +79,51 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative px-4">
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-500 gap-6"
-              style={{ transform: `translateX(-${startIndex * (100 / visibleCount)}%)` }}
-            >
+              style={{
+                transform: `translateX(-${startIndex * (window.innerWidth < 768 ? 105 : 100 / visibleCount)}%)`
+              }}
+                          >
               {testimonials.map((testimonial) => (
-                <Card key={testimonial.id} className="min-w-full md:min-w-[calc(33.333%-1rem)] shadow-md">
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div className="flex items-center gap-3">
-                        <Avatar>
-                          <AvatarFallback className="bg-primary text-primary-foreground">
-                            {testimonial.initials}
-                          </AvatarFallback>
-                        </Avatar>
-                        <div>
-                          <p className="font-medium">{testimonial.name}</p>
-                          <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                <div key={testimonial.id} className="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)]">
+                  <Card className="h-full shadow-md">
+                    <CardContent className="p-6">
+                      <div className="flex justify-between items-start mb-4">
+                        <div className="flex items-center gap-3">
+                          <Avatar>
+                            <AvatarFallback className="bg-primary text-primary-foreground">
+                              {testimonial.initials}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div>
+                            <p className="font-medium">{testimonial.name}</p>
+                            <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                          </div>
+                        </div>
+                        <div className="flex">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`h-4 w-4 ${
+                                i < testimonial.rating ? "fill-primary text-primary" : "text-muted-foreground"
+                              }`}
+                            />
+                          ))}
                         </div>
                       </div>
-                      <div className="flex">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`h-4 w-4 ${
-                              i < testimonial.rating ? "fill-primary text-primary" : "text-muted-foreground"
-                            }`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground">{testimonial.text}</p>
-                  </CardContent>
-                </Card>
+                      <p className="text-muted-foreground">{testimonial.text}</p>
+                    </CardContent>
+                  </Card>
+                </div>
               ))}
             </div>
           </div>
 
           <button
-            className="absolute top-1/2 -left-4 -translate-y-1/2 p-2 rounded-full bg-white shadow-md text-primary hover:bg-primary hover:text-white transition-colors disabled:opacity-50 disabled:pointer-events-none"
+            className="absolute top-1/2 -left-2 md:-left-4 -translate-y-1/2 p-2 rounded-full bg-white shadow-md text-primary hover:bg-primary hover:text-white transition-colors disabled:opacity-50 disabled:pointer-events-none z-10"
             onClick={prevSlide}
             disabled={startIndex === 0}
             aria-label="Depoimentos anteriores"
@@ -112,7 +132,7 @@ export function TestimonialsSection() {
           </button>
 
           <button
-            className="absolute top-1/2 -right-4 -translate-y-1/2 p-2 rounded-full bg-white shadow-md text-primary hover:bg-primary hover:text-white transition-colors disabled:opacity-50 disabled:pointer-events-none"
+            className="absolute top-1/2 -right-2 md:-right-4 -translate-y-1/2 p-2 rounded-full bg-white shadow-md text-primary hover:bg-primary hover:text-white transition-colors disabled:opacity-50 disabled:pointer-events-none z-10"
             onClick={nextSlide}
             disabled={startIndex >= maxStartIndex}
             aria-label="Próximos depoimentos"
