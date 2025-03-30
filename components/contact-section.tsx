@@ -134,6 +134,16 @@ export function ContactSection() {
                   </div>
                 </div>
               </div>
+
+              <div className="mt-8 p-4 bg-primary/10 rounded-lg">
+                <h4 className="font-medium mb-2">Horário de Atendimento</h4>
+                <p className="text-sm text-muted-foreground">
+                  Segunda a Sexta: 8h às 18h
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Sábado: 8h às 12h
+                </p>
+              </div>
             </div>
           </div>
 
