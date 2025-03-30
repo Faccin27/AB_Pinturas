@@ -67,10 +67,7 @@ export function Navbar() {
           variant="ghost"
           size="icon"
           className={cn(
-            "md:hidden",
-            isScrolled
-              ? "text-white hover:bg-primary-foreground/10"
-              : "text-primary hover:bg-primary/10"
+            "md:hidden text-white bg-primary-foreground/10"
           )}
           onClick={() => setIsOpen(!isOpen)}
         >
