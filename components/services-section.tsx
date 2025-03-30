@@ -99,7 +99,7 @@ export function ServicesSection() {
             <h3 className="text-2xl font-bold text-primary mb-4">{services[activeIndex].title}</h3>
             <p className="text-muted-foreground mb-6">{services[activeIndex].description}</p>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {services.map((service) => (
                 <Card
                   key={service.id}
@@ -108,11 +108,13 @@ export function ServicesSection() {
                 >
                   <CardContent className="p-4 flex items-center gap-3">
                     <div
-                      className={`p-2 rounded-full ${activeIndex === service.id - 1 ? "bg-primary text-white" : "bg-muted"}`}
+                      className={`p-2 rounded-full flex-shrink-0 ${
+                        activeIndex === service.id - 1 ? "bg-primary text-white" : "bg-muted"
+                      }`}
                     >
                       <service.icon className="h-5 w-5" />
                     </div>
-                    <span className="font-medium">{service.title}</span>
+                    <span className="font-medium text-sm sm:text-base line-clamp-2">{service.title}</span>
                   </CardContent>
                 </Card>
               ))}
