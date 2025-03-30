@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Star, ChevronLeft, ChevronRight } from "lucide-react"
@@ -43,15 +43,28 @@ const testimonials = [
 export function TestimonialsSection() {
   const [startIndex, setStartIndex] = useState(0)
   const [visibleCount, setVisibleCount] = useState(3)
+  const [translateX, setTranslateX] = useState(0)
   const maxStartIndex = testimonials.length - visibleCount
+  const isMobile = useRef(false)
 
   // Handle responsive behavior with useEffect
   useEffect(() => {
     const handleResize = () => {
-      setVisibleCount(window.innerWidth < 768 ? 1 : 3)
+      const mobile = window.innerWidth < 768
+      isMobile.current = mobile
+      setVisibleCount(mobile ? 1 : 3)
+
+      // Update the translation whenever the screen size or startIndex changes
+      updateTranslation(startIndex, mobile)
     }
 
-    // Set initial value
+    // Function to update translation based on current state
+    const updateTranslation = (index: number, mobile: boolean) => {
+      const percentage = mobile ? 105 : 100 / visibleCount
+      setTranslateX(index * percentage)
+    }
+
+    // Set initial values
     handleResize()
 
     // Add event listener
@@ -59,7 +72,13 @@ export function TestimonialsSection() {
 
     // Clean up
     return () => window.removeEventListener("resize", handleResize)
-  }, [])
+  }, [startIndex, visibleCount])
+
+  // Update translation when startIndex changes
+  useEffect(() => {
+    const percentage = isMobile.current ? 105 : 100 / visibleCount
+    setTranslateX(startIndex * percentage)
+  }, [startIndex, visibleCount])
 
   const nextSlide = () => {
     setStartIndex((prev) => Math.min(prev + 1, maxStartIndex))
@@ -84,9 +103,9 @@ export function TestimonialsSection() {
             <div
               className="flex transition-transform duration-500 gap-6"
               style={{
-                transform: `translateX(-${startIndex * (window.innerWidth < 768 ? 105 : 100 / visibleCount)}%)`
+                transform: `translateX(-${translateX}%)`,
               }}
-                          >
+            >
               {testimonials.map((testimonial) => (
                 <div key={testimonial.id} className="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)]">
                   <Card className="h-full shadow-md">
