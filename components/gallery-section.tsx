@@ -149,8 +149,8 @@ export function CarouselGallery() {
             <button
               onClick={prevSlide}
               disabled={currentIndex === 0 || isAnimating}
-              className={`absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 shadow-md z-10 transition-opacity ${
-                currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "opacity-100 hover:bg-primary hover:text-white"
+              className={`absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-primary shadow-md z-10 transition-opacity ${
+                currentIndex === 0 ? "opacity-50 cursor-not-allowed" : " bg-primary hover:bg-white"
               }`}
               aria-label="Imagem anterior"
             >
@@ -160,10 +160,10 @@ export function CarouselGallery() {
             <button
               onClick={nextSlide}
               disabled={currentIndex >= maxIndex || isAnimating}
-              className={`absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 shadow-md z-10 transition-opacity ${
+              className={`absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white shadow-md z-10 transition-opacity ${
                 currentIndex >= maxIndex
                   ? "opacity-50 cursor-not-allowed"
-                  : "opacity-100 hover:bg-primary hover:text-white"
+                  : "bg-primary hover:bg-white text-black"
               }`}
               aria-label="Próxima imagem"
             >
