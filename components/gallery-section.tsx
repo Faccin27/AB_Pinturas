@@ -1,51 +1,87 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
-// Normalmente, você teria imagens reais aqui
-const galleryImages = [
-  { id: 1, src: "/images/furniture.png", alt: "Montagem de móveis", category: "Móveis" },
-  { id: 2, src: "/images/services.png", alt: "Pintura residencial", category: "Pintura" },
-  { id: 3, src: "/images/quote.png", alt: "Serviços gerais", category: "Serviços" },
-  { id: 4, src: "/images/hero.png", alt: "Pintura comercial", category: "Pintura" },
-  { id: 5, src: "/images/furniture.png", alt: "Montagem de móveis 2", category: "Móveis" },
-  { id: 6, src: "/images/services.png", alt: "Pintura residencial 2", category: "Pintura" },
+const galleryItems = [
+  {
+    id: 1,
+    src: "/images/furniture.png",
+    alt: "Montagem de móveis",
+    title: "Montagem de Móveis",
+    description: "Serviços especializados de montagem para todos os tipos de móveis",
+  },
+  {
+    id: 2,
+    src: "/images/services.png",
+    alt: "Pintura residencial",
+    title: "Pintura Residencial",
+    description: "Acabamento de qualidade para sua casa",
+  },
+  {
+    id: 3,
+    src: "/images/quote.png",
+    alt: "Serviços gerais",
+    title: "Serviços Gerais",
+    description: "Soluções completas para sua residência ou comércio",
+  },
+  {
+    id: 4,
+    src: "/images/hero.png",
+    alt: "Pintura comercial",
+    title: "Pintura Comercial",
+    description: "Soluções profissionais para ambientes comerciais",
+  },
+  {
+    id: 5,
+    src: "/images/pintura.png",
+    alt: "Acabamentos especiais",
+    title: "Acabamentos Especiais",
+    description: "Técnicas avançadas para acabamentos diferenciados",
+  },
+  {
+    id: 6,
+    src: "/images/furniture.png",
+    alt: "Desmontagem de móveis",
+    title: "Desmontagem de Móveis",
+    description: "Serviço cuidadoso para mudanças e reformas",
+  },
 ]
 
-const categories = ["Todos", "Pintura", "Móveis", "Serviços"]
+export function CarouselGallery() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const maxIndex = Math.max(0, galleryItems.length - 3)
+  const carouselRef = useRef<HTMLDivElement>(null)
 
-export function GallerySection() {
-  const [activeCategory, setActiveCategory] = useState("Todos")
-  const [currentImage, setCurrentImage] = useState<number | null>(null)
-
-  const filteredImages =
-    activeCategory === "Todos" ? galleryImages : galleryImages.filter((img) => img.category === activeCategory)
-
-  const openLightbox = (imageId: number) => {
-    setCurrentImage(imageId)
-    document.body.style.overflow = "hidden"
+  const nextSlide = () => {
+    if (isAnimating) return
+    setIsAnimating(true)
+    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex))
   }
 
-  const closeLightbox = () => {
-    setCurrentImage(null)
-    document.body.style.overflow = "auto"
+  const prevSlide = () => {
+    if (isAnimating) return
+    setIsAnimating(true)
+    setCurrentIndex((prev) => Math.max(prev - 1, 0))
   }
 
-  const nextImage = () => {
-    if (currentImage === null) return
-    const currentIndex = filteredImages.findIndex((img) => img.id === currentImage)
-    const nextIndex = (currentIndex + 1) % filteredImages.length
-    setCurrentImage(filteredImages[nextIndex].id)
-  }
+  useEffect(() => {
+    const handleTransitionEnd = () => {
+      setIsAnimating(false)
+    }
 
-  const prevImage = () => {
-    if (currentImage === null) return
-    const currentIndex = filteredImages.findIndex((img) => img.id === currentImage)
-    const prevIndex = (currentIndex - 1 + filteredImages.length) % filteredImages.length
-    setCurrentImage(filteredImages[prevIndex].id)
-  }
+    const carousel = carouselRef.current
+    carousel?.addEventListener("transitionend", handleTransitionEnd)
+
+    return () => {
+      carousel?.removeEventListener("transitionend", handleTransitionEnd)
+    }
+  }, [])
+
+  const visibleItems = galleryItems.slice(currentIndex, currentIndex + 3)
+  const progressPercentage = (currentIndex / maxIndex) * 100
 
   return (
     <section id="galeria" className="py-20 bg-muted/30">
@@ -57,103 +93,98 @@ export function GallerySection() {
           </p>
         </div>
 
-        <div className="flex justify-center mb-8">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map((category) => (
+        <div className="relative max-w-6xl mx-auto px-4 md:px-0">
+          {/* Progress bar */}
+          <div className="hidden md:flex items-center justify-between mb-8 px-12">
+            <div className="w-full h-1 bg-gray-200 relative">
+              <div
+                className="absolute h-1 bg-primary transition-all duration-300"
+                style={{ width: `${progressPercentage}%` }}
+              ></div>
+              {[...Array(Math.min(galleryItems.length, 4))].map((_, i) => {
+                const position = i === 0 ? 0 : i === 3 ? 100 : (i / 3) * 100
+                return (
+                  <div
+                    key={i}
+                    className={`absolute w-4 h-4 rounded-full -translate-x-1/2 -translate-y-1/2 top-1/2 transition-colors duration-300 ${
+                      currentIndex >= ((i * maxIndex) / 3) ? "bg-primary" : "bg-white border-2 border-gray-200"
+                    }`}
+                    style={{ left: `${position}%` }}
+                  ></div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Carousel container */}
+          <div className="relative overflow-hidden">
+            <div
+              ref={carouselRef}
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
+            >
+              {galleryItems.map((item) => (
+                <div key={item.id} className="w-full min-w-[100%] md:min-w-[33.333%] px-2 md:px-4">
+                  <div className="bg-white rounded-xl overflow-hidden shadow-md h-full flex flex-col">
+                    <div className="relative h-64 overflow-hidden">
+                      <Image
+                        src={item.src || "/placeholder.svg"}
+                        alt={item.alt}
+                        width={400}
+                        height={300}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary"></div>
+                    </div>
+                    <div className="p-5">
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
+                      <p className="text-muted-foreground">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation buttons */}
+            <button
+              onClick={prevSlide}
+              disabled={currentIndex === 0 || isAnimating}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 shadow-md z-10 transition-opacity ${
+                currentIndex === 0 ? "opacity-50 cursor-not-allowed" : "opacity-100 hover:bg-primary hover:text-white"
+              }`}
+              aria-label="Imagem anterior"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+
+            <button
+              onClick={nextSlide}
+              disabled={currentIndex >= maxIndex || isAnimating}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 shadow-md z-10 transition-opacity ${
+                currentIndex >= maxIndex
+                  ? "opacity-50 cursor-not-allowed"
+                  : "opacity-100 hover:bg-primary hover:text-white"
+              }`}
+              aria-label="Próxima imagem"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </div>
+
+          {/* Mobile indicators */}
+          <div className="flex justify-center mt-6 md:hidden">
+            {[...Array(maxIndex + 1)].map((_, i) => (
               <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeCategory === category
-                    ? "bg-primary text-white"
-                    : "bg-white text-muted-foreground hover:bg-primary/10"
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`w-2 h-2 mx-1 rounded-full transition-colors ${
+                  currentIndex === i ? "bg-primary" : "bg-gray-300"
                 }`}
-              >
-                {category}
-              </button>
+                aria-label={`Ir para slide ${i + 1}`}
+              />
             ))}
           </div>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredImages.map((image) => (
-            <div
-              key={image.id}
-              className="group relative overflow-hidden rounded-xl shadow-md cursor-pointer transition-transform hover:scale-[1.02]"
-              onClick={() => openLightbox(image.id)}
-            >
-              <Image
-                src={image.src || "/placeholder.svg"}
-                alt={image.alt}
-                width={400}
-                height={300}
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                <div className="p-4 text-white">
-                  <p className="font-medium">{image.alt}</p>
-                  <p className="text-sm opacity-80">{image.category}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {currentImage !== null && (
-          <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center" onClick={closeLightbox}>
-            <div
-              className="relative max-w-4xl w-full h-full flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {filteredImages.find((img) => img.id === currentImage) && (
-                <Image
-                  src={filteredImages.find((img) => img.id === currentImage)!.src || "/placeholder.svg"}
-                  alt={filteredImages.find((img) => img.id === currentImage)!.alt}
-                  width={1200}
-                  height={800}
-                  className="max-h-[80vh] w-auto object-contain"
-                />
-              )}
-
-              <button
-                className="absolute left-4 p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
-                onClick={prevImage}
-                aria-label="Imagem anterior"
-              >
-                <ChevronLeft className="h-6 w-6" />
-              </button>
-
-              <button
-                className="absolute right-4 p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
-                onClick={nextImage}
-                aria-label="Próxima imagem"
-              >
-                <ChevronRight className="h-6 w-6" />
-              </button>
-
-              <button
-                className="absolute top-4 right-4 p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
-                onClick={closeLightbox}
-                aria-label="Fechar"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   )
