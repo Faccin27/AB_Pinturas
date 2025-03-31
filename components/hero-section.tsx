@@ -53,7 +53,7 @@ export function HeroSection() {
         </div>
         <div className="relative z-10 flex justify-center">
           <Image
-            src="/images/heroP.png"
+            src="/images/herop.png"
             alt="AB Pinturas e Serviços"
             width={500}
             height={500}
