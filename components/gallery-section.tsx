@@ -7,28 +7,28 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 const galleryItems = [
   {
     id: 1,
-    src: "/images/furniture.png",
+    src: "/images/p1.png",
     alt: "Montagem de móveis",
     title: "Montagem de Móveis",
     description: "Serviços especializados de montagem para todos os tipos de móveis",
   },
   {
     id: 2,
-    src: "/images/services.png",
+    src: "/images/p2.png",
     alt: "Pintura residencial",
     title: "Pintura Residencial",
     description: "Acabamento de qualidade para sua casa",
   },
   {
     id: 3,
-    src: "/images/quote.png",
+    src: "/images/p3.png",
     alt: "Serviços gerais",
     title: "Serviços Gerais",
     description: "Soluções completas para sua residência ou comércio",
   },
   {
     id: 4,
-    src: "/images/hero.png",
+    src: "/images/p4.png",
     alt: "Pintura comercial",
     title: "Pintura Comercial",
     description: "Soluções profissionais para ambientes comerciais",

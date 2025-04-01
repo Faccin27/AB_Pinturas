@@ -12,28 +12,28 @@ const services = [
     title: "Pintura Residencial",
     description: "Transformamos sua casa com cores que combinam com seu estilo e personalidade.",
     icon: Paintbrush,
-    image: "/images/services.png",
+    image: "/images/p1.png",
   },
   {
     id: 2,
     title: "Montagem e Desmontagem de Móveis",
     description: "Comprou um móvel novo ou vai se mudar? Fazemos a montagem e desmontagem com total cuidado.",
     icon: Wrench,
-    image: "/images/furniture.png",
+    image: "/images/p2.png",
   },
   {
     id: 3,
     title: "Pequenos Reparos",
     description: "Resolvemos pequenos problemas antes que se tornem grandes dores de cabeça.",
     icon: Hammer,
-    image: "/images/quote.png",
+    image: "/images/p3.png",
   },
   {
     id: 4,
     title: "Pintura Comercial",
     description: "Dê uma nova cara ao seu negócio com nossa pintura profissional para ambientes comerciais.",
     icon: Home,
-    image: "/images/services.png",
+    image: "/images/p4.png",
   },
 ]
 
