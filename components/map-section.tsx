@@ -16,7 +16,7 @@ const MapComponent = dynamic(() => import("./map-component"), {
 export function MapSection() {
   const latitude = 41.1579;
   const longitude = -8.6291;
-  const address = "74 R. Dr. Emílio Peres, Porto, Portugal";
+  const address = "Porto, Portugal";
 
   const handleNavigate = () => {
     window.open(

@@ -114,12 +114,15 @@ export function CoverageSection() {
             )}
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <a href="tel:+5549999215720">
-                <Button size="lg" className="gap-2">
-                  <Phone className="h-5 w-5" />
-                  Solicitar Orçamento
-                </Button>
-              </a>
+              <Button
+                size="lg"
+                className="gap-2"
+                onClick={() => (window.location.href = "tel:+5549999215720")}
+              >
+                <Phone className="h-5 w-5" />
+                Solicitar Orçamento
+              </Button>
+
               <Button
                 size="lg"
                 variant="outline"
@@ -140,7 +143,7 @@ export function CoverageSection() {
                 : "translate-x-20 opacity-0"
             )}
           >
-            <div className="relative mx-auto left-16 max-w-[400px]">
+            <div className="relative mx-auto  max-w-[400px]">
               {/* FRAME FILHO DA PUTA NÃO MECHER NESSA PIROCA */}
               <div className="absolute inset-0 bg-primary/20 rounded-[40px] transform rotate-6"></div>
               <div className="absolute inset-0 bg-primary/30 rounded-[40px] transform -rotate-3"></div>
@@ -155,7 +158,6 @@ export function CoverageSection() {
                     {/* Portugal map outline */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <svg viewBox="0 0 200 300" className="h-full w-auto">
-                        <canvas className="y=0.6856x+471015, m80, marker:target:ease-linear backdrop:marker:visited:before "></canvas>
                         <path
                           d="M80,50 C70,70 60,100 70,130 C80,160 90,180 100,200 C110,220 120,240 110,260 C100,280 80,290 60,280 C40,270 30,250 40,230 C50,210 70,200 80,180 C90,160 80,140 70,120 C60,100 50,80 60,60 C70,40 90,30 110,40 C130,50 140,70 130,90 C120,110 100,120 90,140 C80,160 90,180 100,200 C110,220 130,230 150,220 C170,210 180,190 170,170 C160,150 140,140 130,120 C120,100 130,80 140,60 C150,40 170,30 190,40"
                           fill="none"
