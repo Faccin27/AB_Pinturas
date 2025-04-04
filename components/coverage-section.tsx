@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Check, MapPin, Phone, ArrowRight } from "lucide-react";
+import { Check, MapPin, Navigation, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ADDRCONFIG } from "dns";
+import dynamic from "next/dynamic";
 
 const citiesServed = [
   { name: "Porto", isMain: true },
@@ -21,12 +21,59 @@ const citiesServed = [
   { name: "Paredes", isMain: false },
 ];
 
-const openGoogleMaps = () => {
+const handleNavigate = () => {
   window.open(
-    `https://www.google.com/maps/search/?api=1&query=41.1579,-8.6291`,
+    `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`,
     "_blank"
   );
 };
+
+const openGoogleMaps = () => {
+  window.open(
+    `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`,
+    "_blank"
+  );
+};
+
+const getDirections = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const origin = `${position.coords.latitude},${position.coords.longitude}`;
+        window.open(
+          `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${latitude},${longitude}`,
+          "_blank"
+        );
+      },
+      () => {
+        // Fallback se o usuário não permitir a geolocalização
+        window.open(
+          `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`,
+          "_blank"
+        );
+      }
+    );
+  } else {
+    // Fallback para navegadores que não suportam geolocalização
+    window.open(
+      `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`,
+      "_blank"
+    );
+  }
+};
+
+const MapComponent = dynamic(() => import("./map-component-phone"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center bg-gray-100">
+      Carregando mapa...
+    </div>
+  ),
+});
+
+const latitude = 41.1579;
+const longitude = -8.6291;
+const address = "Porto, Portugal";
 
 export function CoverageSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -62,6 +109,17 @@ export function CoverageSection() {
   return (
     <section id="atendimento" className="py-20 bg-white overflow-hidden">
       <div id="coverage-section" className="container">
+        <div className="flex flex-col items-center text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Nossa Localização
+          </h2>
+
+          <p className="font-medium text-lg mt-2 flex items-center gap-2">
+            <MapPin className="text-primary h-5 w-5" />
+            {address}
+          </p>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div
             className={cn(
@@ -114,23 +172,19 @@ export function CoverageSection() {
             )}
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="gap-2"
-                onClick={() => (window.location.href = "tel:+5549999215720")}
-              >
-                <Phone className="h-5 w-5" />
-                Solicitar Orçamento
+              <Button onClick={getDirections} size="lg" className="gap-2">
+                <Navigation className="h-5 w-5" />
+                Como chegar
               </Button>
 
               <Button
-                size="lg"
-                variant="outline"
-                className="gap-2"
                 onClick={openGoogleMaps}
+                variant="outline"
+                size="lg"
+                className="gap-2"
               >
                 <MapPin className="h-5 w-5" />
-                Ver Nossa Localização
+                Ver no google maps
               </Button>
             </div>
           </div>
@@ -153,60 +207,18 @@ export function CoverageSection() {
                 <div className="relative aspect-[9/16] overflow-hidden">
                   <div className="absolute inset-0 bg-primary/10"></div>
 
-                  {/* Custom map with Porto region highligqhted */}
-                  <div className="relative h-full w-full bg-[#e8f4f6]">
-                    {/* Portugal map outline */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <svg viewBox="0 0 200 300" className="h-full w-auto">
-                        <path
-                          d="M80,50 C70,70 60,100 70,130 C80,160 90,180 100,200 C110,220 120,240 110,260 C100,280 80,290 60,280 C40,270 30,250 40,230 C50,210 70,200 80,180 C90,160 80,140 70,120 C60,100 50,80 60,60 C70,40 90,30 110,40 C130,50 140,70 130,90 C120,110 100,120 90,140 C80,160 90,180 100,200 C110,220 130,230 150,220 C170,210 180,190 170,170 C160,150 140,140 130,120 C120,100 130,80 140,60 C150,40 170,30 190,40"
-                          fill="none"
-                          stroke="#009DBF"
-                          strokeWidth="2"
-                        />
-                        A BOLA NA REGIÃO DO PORTO
-                        <circle
-                          cx="80"
-                          cy="80"
-                          r="30"
-                          fill="#009DBF"
-                          fillOpacity="0.3"
-                        />
-                        {/* cidade principal */}
-                        <circle cx="80" cy="80" r="4" fill="#009DBF" />
-                        <text x="85" y="80" fontSize="8" fill="#333">
-                          Porto
-                        </text>
-                        <circle cx="90" cy="90" r="3" fill="#009DBF" />
-                        <text x="95" y="90" fontSize="7" fill="#333">
-                          Gaia
-                        </text>
-                        <circle cx="70" cy="70" r="3" fill="#009DBF" />
-                        <text
-                          x="60"
-                          y="70"
-                          fontSize="7"
-                          fill="#333"
-                          textAnchor="end"
-                        >
-                          Matosinhos
-                        </text>
-                        <circle cx="85" cy="65" r="3" fill="#009DBF" />
-                        <text x="90" y="65" fontSize="7" fill="#333">
-                          Maia
-                        </text>
-                      </svg>
-                    </div>
+                  {/* Map container with aspect ratio */}
+                  <div className="relative aspect-[9/16] overflow-hidden">
+                    <MapComponent
+                      latitude={latitude}
+                      longitude={longitude}
+                      address={address}
+                    />
 
-                    {/* Porto region label */}
-                    <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary/80 text-white px-4 py-2 rounded-lg shadow-lg">
-                      <p className="font-bold text-center">REGIÃO PORTO</p>
-                    </div>
+                    {/* Decorative elements */}
+                    <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-primary rounded-full opacity-70 blur-md"></div>
+                    <div className="absolute -top-6 -right-6 w-16 h-16 bg-primary rounded-full opacity-70 blur-md"></div>
                   </div>
-
-                  {/* Elementos decorativos */}
-                  <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-primary rounded-full opacity-70 blur-md"></div>
-                  <div className="absolute -top-6 -right-6 w-16 h-16 bg-primary rounded-full opacity-70 blur-md"></div>
                 </div>
               </div>
             </div>

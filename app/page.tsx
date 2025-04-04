@@ -18,7 +18,7 @@ export default function Home() {
       <CarouselGallery />
       <AboutSection />
       <TestimonialsSection />
-      <MapSection />
+      {/* <MapSection /> */}
       <CoverageSection />
       <ContactSection />
       <Footer /> 
