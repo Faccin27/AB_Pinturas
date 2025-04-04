@@ -19,7 +19,7 @@ const services = [
     title: "Montagem e Desmontagem de Móveis",
     description: "Comprou um móvel novo ou vai se mudar? Fazemos a montagem e desmontagem com total cuidado.",
     icon: Wrench,
-    image: "/images/p2.png",
+    image: "/images/imoveis.png",
   },
   {
     id: 3,

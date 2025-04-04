@@ -6,13 +6,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const galleryItems = [
   {
-    id: 1,
-    src: "/images/p1.png",
-    alt: "Montagem de móveis",
-    title: "Montagem de Móveis",
-    description: "Serviços especializados de montagem para todos os tipos de móveis",
-  },
-  {
     id: 2,
     src: "/images/p2.png",
     alt: "Pintura residencial",
@@ -21,17 +14,17 @@ const galleryItems = [
   },
   {
     id: 3,
-    src: "/images/p3.png",
-    alt: "Serviços gerais",
-    title: "Serviços Gerais",
-    description: "Soluções completas para sua residência ou comércio",
-  },
-  {
-    id: 4,
     src: "/images/p4.png",
     alt: "Pintura comercial",
     title: "Pintura Comercial",
     description: "Soluções profissionais para ambientes comerciais",
+  },
+  {
+    id: 4,
+    src: "/images/p3.png",
+    alt: "Serviços gerais",
+    title: "Serviços Gerais",
+    description: "Soluções completas para sua residência ou comércio",
   },
   {
     id: 5,
@@ -42,11 +35,32 @@ const galleryItems = [
   },
   {
     id: 6,
-    src: "/images/furniture.png",
+    src: "/images/dmoveis.png",
     alt: "Desmontagem de móveis",
     title: "Desmontagem de Móveis",
     description: "Serviço cuidadoso para mudanças e reformas",
   },
+  {
+    id: 7,
+    src: "/images/imoveis.png",
+    alt: "Montagem de móveis",
+    title: "Montagem de Móveis",
+    description: "Serviços especializados de montagem para todos os tipos de móveis",
+  },
+  {
+    id: 8,
+    src: "/images/rep_before.png",
+    alt: "Casa sem reparo",
+    title: "Antes da Reforma",
+    description: "Estado original do imóvel, antes dos serviços de pintura e reparo",
+  }, {
+    id: 9,
+    src: "/images/rep_after.png",
+    alt: "Casa reparada",
+    title: "Depois da Reforma",
+    description: "Resultado final após nossos serviços especializados de pintura e reparo",
+  }
+  
 ]
 
 export function CarouselGallery() {
