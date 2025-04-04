@@ -5,6 +5,7 @@ import { CarouselGallery } from "@/components/gallery-section"
 import { AboutSection } from "@/components/about-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { MapSection } from '@/components/map-section'
+import { CoverageSection } from "@/components/coverage-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 
@@ -18,6 +19,7 @@ export default function Home() {
       <AboutSection />
       <TestimonialsSection />
       <MapSection />
+      <CoverageSection />
       <ContactSection />
       <Footer /> 
     </main>
