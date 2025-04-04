@@ -9,7 +9,7 @@ const testimonials = [
   {
     id: 1,
     name: "Maria Silva",
-    location: "Lisboa",
+    location: "Aveiro",
     rating: 5,
     text: "Contratei a AB Pinturas para pintar meu apartamento e fiquei extremamente satisfeita com o resultado. Profissionais pontuais e trabalho de qualidade!",
     initials: "MS",

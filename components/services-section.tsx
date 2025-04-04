@@ -12,7 +12,7 @@ const services = [
     title: "Pintura Residencial",
     description: "Transformamos sua casa com cores que combinam com seu estilo e personalidade.",
     icon: Paintbrush,
-    image: "/images/p1.png",
+    image: "/images/p2.png",
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const services = [
     title: "Pintura Comercial",
     description: "Dê uma nova cara ao seu negócio com nossa pintura profissional para ambientes comerciais.",
     icon: Home,
-    image: "/images/p4.png",
+    image: "/images/comercial.png",
   },
 ]
 
