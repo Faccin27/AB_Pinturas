@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Check, MapPin, Phone, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { ADDRCONFIG } from "dns"
+import { useState, useEffect } from "react";
+import { Check, MapPin, Phone, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { ADDRCONFIG } from "dns";
 
 const citiesServed = [
   { name: "Porto", isMain: true },
@@ -19,36 +19,45 @@ const citiesServed = [
   { name: "Santo Tirso", isMain: false },
   { name: "Trofa", isMain: false },
   { name: "Paredes", isMain: false },
-]
+];
+
+const openGoogleMaps = () => {
+  window.open(
+    `https://www.google.com/maps/search/?api=1&query=41.1579,-8.6291`,
+    "_blank"
+  );
+};
 
 export function CoverageSection() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [showAllCities, setShowAllCities] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
+  const [showAllCities, setShowAllCities] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
+          setIsVisible(true);
+          observer.disconnect();
         }
       },
-      { threshold: 0.1 },
-    )
+      { threshold: 0.1 }
+    );
 
-    const element = document.getElementById("coverage-section")
+    const element = document.getElementById("coverage-section");
     if (element) {
-      observer.observe(element)
+      observer.observe(element);
     }
 
     return () => {
       if (element) {
-        observer.unobserve(element)
+        observer.unobserve(element);
       }
-    }
-  }, [])
+    };
+  }, []);
 
-  const displayedCities = showAllCities ? citiesServed : citiesServed.filter((city) => city.isMain)
+  const displayedCities = showAllCities
+    ? citiesServed
+    : citiesServed.filter((city) => city.isMain);
 
   return (
     <section id="atendimento" className="py-20 bg-white overflow-hidden">
@@ -57,7 +66,9 @@ export function CoverageSection() {
           <div
             className={cn(
               "transition-all duration-1000 transform",
-              isVisible ? "translate-x-0 opacity-100" : "-translate-x-20 opacity-0",
+              isVisible
+                ? "translate-x-0 opacity-100"
+                : "-translate-x-20 opacity-0"
             )}
           >
             <div className="relative">
@@ -68,9 +79,10 @@ export function CoverageSection() {
             </div>
 
             <p className="text-muted-foreground text-lg mb-8">
-              Garantimos que nossos serviços de pintura e montagem cheguem até você onde quer que esteja. Seja em
-              cidades grandes ou pequenas, estamos sempre prontos para oferecer a melhor experiência e soluções
-              personalizadas para suas necessidades!
+              Garantimos que nossos serviços de pintura e montagem cheguem até
+              você onde quer que esteja. Seja em cidades grandes ou pequenas,
+              estamos sempre prontos para oferecer a melhor experiência e
+              soluções personalizadas para suas necessidades!
             </p>
 
             <div className="grid grid-cols-2 gap-3 mb-8">
@@ -90,17 +102,30 @@ export function CoverageSection() {
                 className="text-primary p-0 h-auto font-medium"
                 onClick={() => setShowAllCities(!showAllCities)}
               >
-                {showAllCities ? "Mostrar menos cidades" : "Ver todas as cidades atendidas"}
-                <ArrowRight className={`ml-2 h-4 w-4 transition-transform ${showAllCities ? "rotate-90" : ""}`} />
+                {showAllCities
+                  ? "Mostrar menos cidades"
+                  : "Ver todas as cidades atendidas"}
+                <ArrowRight
+                  className={`ml-2 h-4 w-4 transition-transform ${
+                    showAllCities ? "rotate-90" : ""
+                  }`}
+                />
               </Button>
             )}
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="gap-2">
-                <Phone className="h-5 w-5" />
-                Solicitar Orçamento
-              </Button>
-              <Button size="lg" variant="outline" className="gap-2">
+              <a href="tel:+5549999215720">
+                <Button size="lg" className="gap-2">
+                  <Phone className="h-5 w-5" />
+                  Solicitar Orçamento
+                </Button>
+              </a>
+              <Button
+                size="lg"
+                variant="outline"
+                className="gap-2"
+                onClick={openGoogleMaps}
+              >
                 <MapPin className="h-5 w-5" />
                 Ver Nossa Localização
               </Button>
@@ -110,11 +135,13 @@ export function CoverageSection() {
           <div
             className={cn(
               "relative transition-all duration-500 transform",
-              isVisible ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0",
+              isVisible
+                ? "translate-x-0 opacity-100"
+                : "translate-x-20 opacity-0"
             )}
           >
-            <div className="relative mx-auto max-w-[400px]">
-                {/* FRAME FILHO DA PUTA NÃO MECHER NESSA PIROCA */}
+            <div className="relative mx-auto left-16 max-w-[400px]">
+              {/* FRAME FILHO DA PUTA NÃO MECHER NESSA PIROCA */}
               <div className="absolute inset-0 bg-primary/20 rounded-[40px] transform rotate-6"></div>
               <div className="absolute inset-0 bg-primary/30 rounded-[40px] transform -rotate-3"></div>
 
@@ -135,26 +162,33 @@ export function CoverageSection() {
                           stroke="#009DBF"
                           strokeWidth="2"
                         />
-
                         A BOLA NA REGIÃO DO PORTO
-                        <circle cx="80" cy="80" r="30" fill="#009DBF" fillOpacity="0.3" />
-
+                        <circle
+                          cx="80"
+                          cy="80"
+                          r="30"
+                          fill="#009DBF"
+                          fillOpacity="0.3"
+                        />
                         {/* cidade principal */}
                         <circle cx="80" cy="80" r="4" fill="#009DBF" />
                         <text x="85" y="80" fontSize="8" fill="#333">
                           Porto
                         </text>
-
                         <circle cx="90" cy="90" r="3" fill="#009DBF" />
                         <text x="95" y="90" fontSize="7" fill="#333">
                           Gaia
                         </text>
-
                         <circle cx="70" cy="70" r="3" fill="#009DBF" />
-                        <text x="60" y="70" fontSize="7" fill="#333" textAnchor="end">
+                        <text
+                          x="60"
+                          y="70"
+                          fontSize="7"
+                          fill="#333"
+                          textAnchor="end"
+                        >
                           Matosinhos
                         </text>
-
                         <circle cx="85" cy="65" r="3" fill="#009DBF" />
                         <text x="90" y="65" fontSize="7" fill="#333">
                           Maia
@@ -178,16 +212,43 @@ export function CoverageSection() {
             {/* Pinsel */}
             <div className="absolute -bottom-10 -right-10 w-24 h-24 transform rotate-45">
               <svg viewBox="0 0 100 100" className="w-full h-full">
-                <rect x="45" y="10" width="10" height="80" fill="#009DBF" rx="2" />
-                <rect x="40" y="5" width="20" height="10" fill="#007A99" rx="2" />
-                <rect x="35" y="0" width="30" height="10" fill="#009DBF" rx="5" />
-                <rect x="42" y="85" width="16" height="15" fill="#FFCC00" rx="2" />
+                <rect
+                  x="45"
+                  y="10"
+                  width="10"
+                  height="80"
+                  fill="#009DBF"
+                  rx="2"
+                />
+                <rect
+                  x="40"
+                  y="5"
+                  width="20"
+                  height="10"
+                  fill="#007A99"
+                  rx="2"
+                />
+                <rect
+                  x="35"
+                  y="0"
+                  width="30"
+                  height="10"
+                  fill="#009DBF"
+                  rx="5"
+                />
+                <rect
+                  x="42"
+                  y="85"
+                  width="16"
+                  height="15"
+                  fill="#FFCC00"
+                  rx="2"
+                />
               </svg>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
-
