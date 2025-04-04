@@ -1,3 +1,1 @@
-README.md.
- w
-s
+AB pinturas
