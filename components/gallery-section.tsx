@@ -53,20 +53,37 @@ const galleryItems = [
     alt: "Casa sem reparo",
     title: "Antes da Reforma",
     description: "Estado original do imóvel, antes dos serviços de pintura e reparo",
-  }, {
+  },
+  {
     id: 9,
     src: "/images/rep_after.png",
     alt: "Casa reparada",
     title: "Depois da Reforma",
     description: "Resultado final após nossos serviços especializados de pintura e reparo",
-  }
-  
+  },
 ]
 
 export function CarouselGallery() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
-  const maxIndex = Math.max(0, galleryItems.length - 3)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    // Check on initial load
+    checkMobile()
+
+    // Add event listener for window resize
+    window.addEventListener("resize", checkMobile)
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
+  const maxIndex = isMobile ? galleryItems.length - 1 : Math.max(0, galleryItems.length - 3)
   const carouselRef = useRef<HTMLDivElement>(null)
 
   const nextSlide = () => {
@@ -135,7 +152,9 @@ export function CarouselGallery() {
             <div
               ref={carouselRef}
               className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
+              style={{
+                transform: `translateX(-${currentIndex * (isMobile ? 100 : 100 / 3)}%)`,
+              }}
             >
               {galleryItems.map((item) => (
                 <div key={item.id} className="w-full min-w-[100%] md:min-w-[33.333%] px-2 md:px-4">
@@ -175,9 +194,7 @@ export function CarouselGallery() {
               onClick={nextSlide}
               disabled={currentIndex >= maxIndex || isAnimating}
               className={`absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white shadow-md z-10 transition-opacity ${
-                currentIndex >= maxIndex
-                  ? "opacity-50 cursor-not-allowed"
-                  : "bg-primary hover:bg-white text-black"
+                currentIndex >= maxIndex ? "opacity-50 cursor-not-allowed" : "bg-primary hover:bg-white text-black"
               }`}
               aria-label="Próxima imagem"
             >
