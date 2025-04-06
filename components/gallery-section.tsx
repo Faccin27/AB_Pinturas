@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const galleryItems = [
   {
@@ -45,82 +45,89 @@ const galleryItems = [
     src: "/images/imoveis.png",
     alt: "Montagem de móveis",
     title: "Montagem de Móveis",
-    description: "Serviços especializados de montagem para todos os tipos de móveis",
+    description:
+      "Serviços especializados de montagem para todos os tipos de móveis",
   },
   {
     id: 8,
     src: "/images/rep_before.png",
     alt: "Casa sem reparo",
     title: "Antes da Reforma",
-    description: "Estado original do imóvel, antes dos serviços de pintura e reparo",
+    description:
+      "Estado original do imóvel, antes dos serviços de pintura e reparo",
   },
   {
     id: 9,
     src: "/images/rep_after.png",
     alt: "Casa reparada",
     title: "Depois da Reforma",
-    description: "Resultado final após nossos serviços especializados de pintura e reparo",
+    description:
+      "Resultado final após nossos serviços especializados de pintura e reparo",
   },
-]
+];
 
 export function CarouselGallery() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAnimating, setIsAnimating] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
+      setIsMobile(window.innerWidth < 768);
+    };
 
-    // Check on initial load
-    checkMobile()
+    checkMobile();
 
-    // Add event listener for window resize
-    window.addEventListener("resize", checkMobile)
+    // event listener pro resize
+    window.addEventListener("resize", checkMobile);
 
     // Cleanup
-    return () => window.removeEventListener("resize", checkMobile)
-  }, [])
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
-  const maxIndex = isMobile ? galleryItems.length - 1 : Math.max(0, galleryItems.length - 3)
-  const carouselRef = useRef<HTMLDivElement>(null)
+  const maxIndex = isMobile
+    ? galleryItems.length - 1
+    : Math.max(0, galleryItems.length - 3);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = () => {
-    if (isAnimating) return
-    setIsAnimating(true)
-    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex))
-  }
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+  };
 
   const prevSlide = () => {
-    if (isAnimating) return
-    setIsAnimating(true)
-    setCurrentIndex((prev) => Math.max(prev - 1, 0))
-  }
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+  };
 
   useEffect(() => {
     const handleTransitionEnd = () => {
-      setIsAnimating(false)
-    }
+      setIsAnimating(false);
+    };
 
-    const carousel = carouselRef.current
-    carousel?.addEventListener("transitionend", handleTransitionEnd)
+    const carousel = carouselRef.current;
+    carousel?.addEventListener("transitionend", handleTransitionEnd);
 
     return () => {
-      carousel?.removeEventListener("transitionend", handleTransitionEnd)
-    }
-  }, [])
+      carousel?.removeEventListener("transitionend", handleTransitionEnd);
+    };
+  }, []);
 
-  const visibleItems = galleryItems.slice(currentIndex, currentIndex + 3)
-  const progressPercentage = (currentIndex / maxIndex) * 100
+  const visibleItems = galleryItems.slice(currentIndex, currentIndex + 3);
+  const progressPercentage = (currentIndex / maxIndex) * 100;
 
   return (
     <section id="galeria" className="py-20 bg-muted/30">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Galeria de Trabalhos</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Galeria de Trabalhos
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Confira alguns dos nossos trabalhos realizados com qualidade e dedicação.
+            Confira alguns dos nossos trabalhos realizados com qualidade e
+            dedicação.
           </p>
         </div>
 
@@ -133,16 +140,18 @@ export function CarouselGallery() {
                 style={{ width: `${progressPercentage}%` }}
               ></div>
               {[...Array(Math.min(galleryItems.length, 4))].map((_, i) => {
-                const position = i === 0 ? 0 : i === 3 ? 100 : (i / 3) * 100
+                const position = i === 0 ? 0 : i === 3 ? 100 : (i / 3) * 100;
                 return (
                   <div
                     key={i}
                     className={`absolute w-4 h-4 rounded-full -translate-x-1/2 -translate-y-1/2 top-1/2 transition-colors duration-300 ${
-                      currentIndex >= ((i * maxIndex) / 3) ? "bg-primary" : "bg-white border-2 border-gray-200"
+                      currentIndex >= (i * maxIndex) / 3
+                        ? "bg-primary"
+                        : "bg-white border-2 border-gray-200"
                     }`}
                     style={{ left: `${position}%` }}
                   ></div>
-                )
+                );
               })}
             </div>
           </div>
@@ -153,11 +162,16 @@ export function CarouselGallery() {
               ref={carouselRef}
               className="flex transition-transform duration-500 ease-out"
               style={{
-                transform: `translateX(-${currentIndex * (isMobile ? 100 : 100 / 3)}%)`,
+                transform: `translateX(-${
+                  currentIndex * (isMobile ? 100 : 100 / 3)
+                }%)`,
               }}
             >
               {galleryItems.map((item) => (
-                <div key={item.id} className="w-full min-w-[100%] md:min-w-[33.333%] px-2 md:px-4">
+                <div
+                  key={item.id}
+                  className="w-full min-w-[100%] md:min-w-[33.333%] px-2 md:px-4"
+                >
                   <div className="bg-white rounded-xl overflow-hidden shadow-md h-full flex flex-col">
                     <div className="relative h-64 overflow-hidden">
                       <Image
@@ -170,8 +184,12 @@ export function CarouselGallery() {
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary"></div>
                     </div>
                     <div className="p-5">
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
-                      <p className="text-muted-foreground">{item.description}</p>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -182,8 +200,10 @@ export function CarouselGallery() {
             <button
               onClick={prevSlide}
               disabled={currentIndex === 0 || isAnimating}
-              className={`absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-primary shadow-md z-10 transition-opacity ${
-                currentIndex === 0 ? "opacity-50 cursor-not-allowed" : " bg-primary hover:bg-white"
+              className={`absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 text-white flex items-center justify-center rounded-full bg-primary shadow-md z-10 transition-opacity ${
+                currentIndex === 0
+                  ? "opacity-50 cursor-not-allowed"
+                  : " bg-primary hover:bg-white hover:text-black"
               }`}
               aria-label="Imagem anterior"
             >
@@ -194,7 +214,9 @@ export function CarouselGallery() {
               onClick={nextSlide}
               disabled={currentIndex >= maxIndex || isAnimating}
               className={`absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white shadow-md z-10 transition-opacity ${
-                currentIndex >= maxIndex ? "opacity-50 cursor-not-allowed" : "bg-primary hover:bg-white text-black"
+                currentIndex >= maxIndex
+                  ? "opacity-50 cursor-not-allowed"
+                  : "bg-primary hover:bg-white hover:text-black"
               }`}
               aria-label="Próxima imagem"
             >
@@ -218,6 +240,5 @@ export function CarouselGallery() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
