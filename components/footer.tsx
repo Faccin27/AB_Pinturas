@@ -1,6 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram, Twitter, Phone, Mail } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  Phone,
+  Mail,
+  CodeXml,
+} from "lucide-react";
 
 export function Footer() {
   return (
@@ -165,6 +172,16 @@ export function Footer() {
             © {new Date().getFullYear()} AB Pinturas e Serviços. Todos os
             direitos reservados.
           </p>
+          <Link
+            href="https://faccindev.pro"
+            className="text-white/80 hover:text-white transition-colors text-sm flex gap-1"
+          >
+            <CodeXml className="h-5 w-5 text-purple-300/80 hover:text-purple-300" />
+            Site criado e desenvolvido por{" "}
+            <span className="text-purple-300/80 hover:text-purple-300 transition-colors">
+              FaccinDev
+            </span>
+          </Link>
           <div className="flex gap-6">
             <Link
               href="#"
