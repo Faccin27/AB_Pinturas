@@ -9,7 +9,7 @@ const testimonials = [
   {
     id: 1,
     name: "Maria Silva",
-    location: "Aveiro",
+    location: "Matosinhos",
     rating: 5,
     text: "Contratei a AB Pinturas para pintar meu apartamento e fiquei extremamente satisfeita com o resultado. Profissionais pontuais e trabalho de qualidade!",
     initials: "MS",
@@ -25,7 +25,7 @@ const testimonials = [
   {
     id: 3,
     name: "Ana Costa",
-    location: "Braga",
+    location: "Maia",
     rating: 4,
     text: "Contratei para pequenos reparos em casa e fiquei muito satisfeita. Preço justo e trabalho bem feito.",
     initials: "AC",
@@ -33,7 +33,7 @@ const testimonials = [
   {
     id: 4,
     name: "Carlos Santos",
-    location: "Coimbra",
+    location: "Aveiro",
     rating: 5,
     text: "Pintaram minha loja comercial e o resultado superou minhas expectativas. Profissionais sérios e comprometidos.",
     initials: "CS",
