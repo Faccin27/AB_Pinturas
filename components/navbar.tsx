@@ -66,7 +66,7 @@ export function Navbar() {
             className="gap-2 hover:text-white/80 hover:font-bold text-white transition-all duration-200"
           >
             <a
-              href="https://wa.me/351935986208"
+              href="https://wa.me/351935986208?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento."
               target="_blank"
               rel="noopener noreferrer"
               className="flex gap-2"
@@ -103,7 +103,7 @@ export function Navbar() {
               )}
               <Button size="sm" className="gap-2 w-full" asChild>
                 <a
-                  href="https://wa.me/351935986208"
+                  href="https://wa.me/351935986208?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento."
                   target="_blank"
                   rel="noopener noreferrer"
                 >

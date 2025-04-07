@@ -152,7 +152,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-white/80" />
-                <a href="https://wa.me/351935986208" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/351935986208?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">
                 <span>935 986 208</span>
                 </a>
               </li>

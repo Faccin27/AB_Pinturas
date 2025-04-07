@@ -101,7 +101,7 @@ export function ContactSection() {
                   <div>
                     <p className="font-medium">Telefone</p>
                     <a
-                      href="https://wa.me/351935986208"
+                      href="https://wa.me/351935986208?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento."
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -149,7 +149,7 @@ export function ContactSection() {
                 </p>
                 <Button type="submit" className="w-full mt-2" size="lg">
                   <a
-                    href="https://wa.me/351935986208"
+                    href="https://wa.me/351935986208?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex"
