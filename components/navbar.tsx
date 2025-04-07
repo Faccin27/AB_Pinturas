@@ -65,7 +65,12 @@ export function Navbar() {
             size="sm"
             className="gap-2 hover:text-white/80 hover:font-bold text-white transition-all duration-200"
           >
-            <a href="tel:+351935986208" className="flex gap-2">
+            <a
+              href="https://wa.me/351935986208"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex gap-2"
+            >
               <Phone className="h-4 w-4 " />
               935 986 208
             </a>
@@ -97,7 +102,11 @@ export function Navbar() {
                 )
               )}
               <Button size="sm" className="gap-2 w-full" asChild>
-                <a href="tel:+351935986208">
+                <a
+                  href="https://wa.me/351935986208"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Phone className="h-4 w-4" />
                   935 986 208
                 </a>
