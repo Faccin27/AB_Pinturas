@@ -100,7 +100,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Telefone</p>
-                    <a href="tel:+5549999215720">
+                    <a href="tel:351935986208">
                       <p className="text-muted-foreground hover:text-primary hover:font-bold transition-all duration-200">
                         935 986 208
                       </p>
@@ -143,6 +143,12 @@ export function ContactSection() {
                 <p className="text-sm text-muted-foreground">
                   Sábado: 8h às 12h
                 </p>
+                <Button type="submit" className="w-full mt-2" size="lg">
+                  <a href="tel:+351935986208" className="flex">
+                    <Phone className="h-5 w-5 text-white mr-2" />
+                    Chamar no whatsapp
+                  </a>
+                </Button>
               </div>
             </div>
           </div>

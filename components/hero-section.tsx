@@ -23,15 +23,17 @@ export function HeroSection() {
               variant="outline"
               className="bg-white text-primary hover:bg-white/10"
             >
-              Nossos Serviços
+              <a href="#serviços">Nossos Serviços</a>
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="text-primary border-white hover:bg-white/10"
             >
+              <a href="#contato" className="flex">
               <Phone className="mr-2 h-5 w-5" />
               Solicitar Orçamento
+              </a>
             </Button>
           </div>
           <div className="pt-4">

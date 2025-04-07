@@ -107,7 +107,7 @@ export function CoverageSection() {
     : citiesServed.filter((city) => city.isMain);
 
   return (
-    <section id="atendimento" className="py-20 bg-white overflow-hidden">
+    <section id="localização" className="py-20 bg-white overflow-hidden">
       <div id="coverage-section" className="container">
         <div className="flex flex-col items-center text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">

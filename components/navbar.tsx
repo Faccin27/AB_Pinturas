@@ -43,7 +43,14 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">
-          {["Início", "Serviços", "Galeria", "Sobre", "Contato", "Localização"].map((item) => (
+          {[
+            "Início",
+            "Serviços",
+            "Galeria",
+            "Sobre",
+            "Contato",
+            "Localização",
+          ].map((item) => (
             <Link
               key={item}
               href={`/#${item.toLowerCase()}`}
@@ -58,17 +65,17 @@ export function Navbar() {
             size="sm"
             className="gap-2 hover:text-white/80 hover:font-bold text-white transition-all duration-200"
           >
-            <Phone className="h-4 w-4 " />
-            935 986 208
+            <a href="tel:+351935986208" className="flex gap-2">
+              <Phone className="h-4 w-4 " />
+              935 986 208
+            </a>
           </Button>
         </nav>
 
         <Button
           variant="ghost"
           size="icon"
-          className={cn(
-            "md:hidden text-white bg-primary-foreground/10"
-          )}
+          className={cn("md:hidden text-white bg-primary-foreground/10")}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -89,9 +96,11 @@ export function Navbar() {
                   </Link>
                 )
               )}
-              <Button size="sm" className="gap-2 w-full">
-                <Phone className="h-4 w-4" />
-                935 986 208
+              <Button size="sm" className="gap-2 w-full" asChild>
+                <a href="tel:+351935986208">
+                  <Phone className="h-4 w-4" />
+                  935 986 208
+                </a>
               </Button>
             </nav>
           </div>

@@ -31,14 +31,7 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               <Link
-                href="https://faccindev.pro"
-                className="text-white/80 hover:text-white transition-colors"
-              >
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link
-                href="https://faccindev.pro"
+                href="https://www.instagram.com/ab_pinturaseservicos.pt/"
                 className="text-white/80 hover:text-white transition-colors"
               >
                 <Instagram className="h-5 w-5" />
@@ -48,9 +41,17 @@ export function Footer() {
                 href="https://faccindev.pro"
                 className="text-white/80 hover:text-white transition-colors"
               >
+                <CodeXml className="h-5 w-5" />
+                <span className="sr-only">Desenvolvedor</span>
+              </Link>
+
+              {/* <Link
+                href="https://faccindev.pro"
+                className="text-white/80 hover:text-white transition-colors"
+              >
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
-              </Link>
+              </Link> */}
             </div>
           </div>
 
@@ -59,7 +60,7 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="#"
+                  href="#serviços"
                   className="text-white/80 hover:text-white transition-colors"
                 >
                   Pintura Residencial
@@ -67,7 +68,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="serviços"
                   className="text-white/80 hover:text-white transition-colors"
                 >
                   Pintura Comercial
@@ -75,7 +76,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="#serviços"
                   className="text-white/80 hover:text-white transition-colors"
                 >
                   Montagem de Móveis
@@ -83,7 +84,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="#serviços"
                   className="text-white/80 hover:text-white transition-colors"
                 >
                   Desmontagem de Móveis
@@ -91,7 +92,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="#serviços"
                   className="text-white/80 hover:text-white transition-colors"
                 >
                   Pequenos Reparos
@@ -151,7 +152,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-white/80" />
-                <a href="tel:+5549999215720">
+                <a href="tel:+351935986208">
                   <span>935 986 208</span>
                 </a>
               </li>
