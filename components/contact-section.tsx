@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, Mail, MapPin, Send, Check } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Check, Instagram } from "lucide-react";
 import emailjs from "emailjs-com";
 
 interface FormData {
@@ -128,13 +128,15 @@ export function ContactSection() {
 
                 <div className="flex items-start gap-4">
                   <div className="bg-primary/10 p-3 rounded-full">
-                    <MapPin className="h-5 w-5 text-primary" />
+                    <Instagram className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium">Localização</p>
-                    <p className="text-muted-foreground">
-                      Atendemos em toda a região de porto e arredores
-                    </p>
+                    <p className="font-medium">Instagram</p>
+                    <a href="https://www.instagram.com/ab_pinturaseservicos.pt/">
+                      <p className="text-muted-foreground hover:text-primary hover:font-bold transition-all duration-200">
+                        @ab_pinturaseservicos.pt
+                      </p>
+                    </a>
                   </div>
                 </div>
               </div>
