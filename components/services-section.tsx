@@ -23,10 +23,10 @@ const services = [
   },
   {
     id: 3,
-    title: "Pequenos Reparos",
-    description: "Resolvemos pequenos problemas antes que se tornem grandes dores de cabeça.",
+    title: "Acabamentos Especiais",
+    description: "Fazemos cada minimo detalhe, para que seu espaço seja digno de um bom cliente",
     icon: Hammer,
-    image: "/images/p3.png",
+    image: "/images/pintura.png",
   },
   {
     id: 4,
