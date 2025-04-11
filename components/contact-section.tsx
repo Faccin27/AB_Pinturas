@@ -118,9 +118,9 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <a href="mailto:gfaccin27@gmail.com">
+                    <a href="mailto:Abpinturasportugal@gmail.com">
                       <p className="text-muted-foreground hover:text-primary hover:font-bold transition-all duration-200">
-                        contato@abpinturas.pt
+                        Abpinturasportugal@gmail.com
                       </p>
                     </a>
                   </div>

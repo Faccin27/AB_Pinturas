@@ -120,7 +120,7 @@ export function MapSection() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-primary">Email:</span>
-                    <span className="font-medium">contato@abpinturas.pt</span>
+                    <span className="font-medium">Abpinturasportugal@gmail.com</span>
                   </li>
                 </ul>
               </div>

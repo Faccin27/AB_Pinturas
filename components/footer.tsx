@@ -158,8 +158,8 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-white/80" />
-                <a href="mailto:gfaccin27@gmail.com">
-                  <span>contato@abpinturas.pt</span>
+                <a href="mailto:Abpinturasportugal@gmail.com">
+                  <span>Abpinturasportugal@gmail.com</span>
                 </a>
               </li>
             </ul>
