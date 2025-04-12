@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "AB Pinturas e Serviços - Pintura em Porto e Região",
     description:
       "Serviços profissionais de pintura residencial e comercial em Porto, incluindo montagem de móveis e reparos.",
-    url: "https://abpinturas.com.br/",
+    url: "https://abpinturas.pt/",
     siteName: "AB Pinturas",
     images: [
       {
@@ -52,9 +52,8 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
   },
-  metadataBase: new URL("https://abpinturas.com.br"),
+  metadataBase: new URL("https://abpinturas.pt/"),
 };
 
 
