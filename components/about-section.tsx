@@ -1,5 +1,5 @@
-import Image from "next/image"
-import { Check } from "lucide-react"
+import Image from "next/image";
+import { Check } from "lucide-react";
 
 export function AboutSection() {
   return (
@@ -7,11 +7,14 @@ export function AboutSection() {
       <div className="container">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Sobre a AB Pinturas e Serviços</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+              Sobre a AB Pinturas e Serviços
+            </h2>
             <p className="text-muted-foreground mb-6">
-              Somos uma empresa especializada em serviços de pintura residencial e comercial, com foco na qualidade e
-              satisfação dos nossos clientes. Nossa equipe é formada por profissionais experientes e comprometidos com a
-              excelência em cada projeto.
+              Somos uma empresa especializada em serviços de pintura residencial
+              e comercial, com foco na qualidade e satisfação dos nossos
+              clientes. Nossa equipe é formada por profissionais experientes e
+              comprometidos com a excelência em cada projeto.
             </p>
 
             <div className="space-y-4 mb-8">
@@ -20,10 +23,12 @@ export function AboutSection() {
                   <Check className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Qualidade Garantida</h3>
+                  <h3 className="font-medium text-foreground">
+                    Qualidade Garantida
+                  </h3>
                   <p className="text-muted-foreground">
-                    Trabalhamos com materiais de primeira linha e técnicas modernas para garantir um acabamento
-                    perfeito.
+                    Trabalhamos com materiais de primeira linha e técnicas
+                    modernas para garantir um acabamento perfeito.
                   </p>
                 </div>
               </div>
@@ -33,9 +38,12 @@ export function AboutSection() {
                   <Check className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Profissionais Experientes</h3>
+                  <h3 className="font-medium text-foreground">
+                    Profissionais Experientes
+                  </h3>
                   <p className="text-muted-foreground">
-                    Nossa equipe é formada por profissionais com anos de experiência no mercado.
+                    Nossa equipe é formada por profissionais com anos de
+                    experiência no mercado.
                   </p>
                 </div>
               </div>
@@ -45,11 +53,26 @@ export function AboutSection() {
                   <Check className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Compromisso com Prazos</h3>
+                  <h3 className="font-medium text-foreground">
+                    Compromisso com Prazos
+                  </h3>
                   <p className="text-muted-foreground">
-                    Respeitamos os prazos estabelecidos e entregamos o serviço conforme combinado.
+                    Respeitamos os prazos estabelecidos e entregamos o serviço
+                    conforme combinado.
                   </p>
                 </div>
+              </div>
+              <div className="flex justify-center scale-150 pt-16 hover:opacity-90 transition-all duration-500 hover:scale-[155%]">
+                {" "}
+                <a
+                  target="_blank"
+                  href="https://www.zaask.pt/user/abpinturasportugal"
+                >
+                  <img
+                    src="https://www.zaask.pt/widget?user=941251&widget=pro-findme"
+                    alt=""
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -70,6 +93,5 @@ export function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
