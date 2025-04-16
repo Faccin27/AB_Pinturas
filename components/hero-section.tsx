@@ -18,23 +18,25 @@ export function HeroSection() {
             qualidade para residências e comércios.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
+          <a href="#serviços">
             <Button
               size="lg"
               variant="outline"
               className="bg-white text-primary hover:bg-white/10"
             >
-              <a href="#serviços">Nossos Serviços</a>
+              Nossos Serviços
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-primary border-white hover:bg-white/10"
-            >
-              <a href="#contato" className="flex">
-              <Phone className="mr-2 h-5 w-5" />
-              Solicitar Orçamento
-              </a>
-            </Button>
+            </a>
+            <a href="#contato" className="flex">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-primary border-white hover:bg-white/10"
+              >
+                <Phone className="mr-2 h-5 w-5" />
+                Solicitar Orçamento
+              </Button>
+            </a>
           </div>
           <div className="pt-4">
             <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
