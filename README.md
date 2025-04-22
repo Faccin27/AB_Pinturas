@@ -1,4 +1,3 @@
-```markdown
 # AB Pinturas
 
 Site institucional desenvolvido para a empresa **AB Pinturas**, especializada em pintura residencial e comercial no Porto, Portugal.
