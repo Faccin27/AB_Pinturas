@@ -66,10 +66,10 @@ export function AboutSection() {
                 {" "}
                 <a
                   target="_blank"
-                  href="https://www.zaask.pt/user/abpinturasportugal"
+                  href="https://www.zaask.pt/user/abpinturaspt"
                 >
                   <img
-                    src="https://www.zaask.pt/widget?user=941251&widget=pro-findme"
+                    src="https://www.zaask.pt/widget?user=838670&widget=pro-since"
                     alt=""
                   />
                 </a>
