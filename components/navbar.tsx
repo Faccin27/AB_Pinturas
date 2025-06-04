@@ -29,11 +29,11 @@ export function Navbar() {
       <div className="container flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/images/logoV.png"
+            src="/images/ab.png"
             alt="AB Pinturas e Serviços"
             width={72}
             height={72}
-            className="h-14 w-auto"
+            className="h-14 w-auto rounded-full"
           />
           <span
             className={cn("font-bold text-xl transition-colors text-white")}

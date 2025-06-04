@@ -80,9 +80,9 @@ export function AboutSection() {
           <div className="relative">
             <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary/20 rounded-lg -z-10"></div>
             <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary/20 rounded-lg -z-10"></div>
-            <div className="relative rounded-xl overflow-hidden shadow-xl">
+            <div className="relative rounded-xl overflow-hidden">
               <Image
-                src="/images/logo.png"
+                src="/images/ab-Photoroom.png"
                 alt="AB Pinturas e Serviços"
                 width={600}
                 height={600}
