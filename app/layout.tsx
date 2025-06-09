@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "AB Pinturas",
     images: [
       {
-        url: "/images/logo.png",
+        url: "/images/ab.png",
         width: 1200,
         height: 630,
         alt: "Logo AB Pinturas",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "AB Pinturas e Serviços - Porto",
     description:
       "Profissionais em pintura residencial e comercial em Porto. Qualidade e agilidade em cada serviço.",
-    images: ["/images/logo.png"],
+    images: ["/images/ab.png"],
   },
   icons: {
     icon: "/favicon.ico",
