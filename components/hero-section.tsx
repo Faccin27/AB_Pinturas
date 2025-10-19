@@ -59,7 +59,7 @@ export function HeroSection() {
           </div>
 
           {/* Additional services list */}
-          <div className="pt-6">
+          {/* <div className="pt-6">
             <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto shadow-lg hover:-translate-y-2 transition-all duration-200">
               <h3 className="text-lg font-semibold mb-4 flex items-center justify-center gap-2">
                 <CheckCircle className="h-5 w-5" />
@@ -76,7 +76,7 @@ export function HeroSection() {
                 )}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
