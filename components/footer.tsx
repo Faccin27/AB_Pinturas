@@ -26,8 +26,10 @@ export function Footer() {
               <span className="font-bold text-xl">Renobric</span>
             </Link>
             <p className="text-white/80 mb-4">
-              Serviços de qualidade em pinturas em geral, remodelações em geral e montagem
-              de móveis.
+              Prestamos serviços de remodelação de casas de banho, pinturas
+              interiores e exteriores, reparos gerais e montagem de móveis.
+              Garantimos qualidade, profissionalismo e acabamentos impecáveis
+              em cada detalhe.
             </p>
             <div className="flex gap-4">
               <Link
