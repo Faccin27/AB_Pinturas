@@ -16,7 +16,7 @@ import { Card, CardContent } from "@/components/ui/card";
 const services = [
   {
     id: 1,
-    title: "Pintura Residencial",
+    title: "Pinturas em Geral",
     description:
       "Transformamos sua casa com cores que combinam com seu estilo e personalidade.",
     icon: Paintbrush,
@@ -38,14 +38,7 @@ const services = [
     icon: Hammer,
     image: "/images/pintura.png",
   },
-  {
-    id: 4,
-    title: "Pintura Comercial",
-    description:
-      "Dê uma nova cara ao seu negócio com nossa pintura profissional para ambientes comerciais.",
-    icon: Home,
-    image: "/images/comercial.png",
-  },
+
 ];
 
 export function ServicesSection() {

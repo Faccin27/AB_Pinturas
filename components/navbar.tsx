@@ -30,7 +30,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/images/ab.png"
-            alt="AB Pinturas e Serviços"
+            alt="Renobric"
             width={72}
             height={72}
             className="h-14 w-auto rounded-full"
@@ -38,7 +38,7 @@ export function Navbar() {
           <span
             className={cn("font-bold text-xl transition-colors text-white")}
           >
-            AB Pinturas
+            Renobric
           </span>
         </Link>
 

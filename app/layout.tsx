@@ -7,19 +7,20 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AB Pinturas e Serviços - Pintura Residencial e Comercial em Porto",
+  title: "Renobric - Remodelações e Pinturas em Geral no Porto, Portugal",
   description:
-    "AB Pinturas oferece serviços de pintura residencial e comercial em Porto, Portugal. Também realizamos montagem e desmontagem de móveis, pequenos reparos e muito mais.",
+    "A Renobric é especialista em remodelações, pinturas e serviços gerais no Porto. Oferecemos soluções completas para residências, escritórios e espaços comerciais, com qualidade e confiança.",
   keywords: [
+    "remodelações Porto",
     "pintura em Porto",
-    "pintor residencial",
-    "pintor comercial",
-    "pintura de imóveis",
-    "serviços em Portugal",
-    "pintura em apartamentos",
-    "montagem de móveis Porto",
-    "reparos residenciais",
-    "pintores profissionais"
+    "pintor profissional",
+    "serviços de remodelação",
+    "pintura de interiores",
+    "pintura residencial",
+    "pintura comercial",
+    "reformas em Porto",
+    "serviços gerais Porto",
+    "pintores no Porto"
   ],
   robots: {
     index: true,
@@ -27,17 +28,17 @@ export const metadata: Metadata = {
     nocache: false,
   },
   openGraph: {
-    title: "AB Pinturas e Serviços - Pintura em Porto e Região",
+    title: "Renobric - Remodelações e Pinturas em Geral no Porto",
     description:
-      "Serviços profissionais de pintura residencial e comercial em Porto, incluindo montagem de móveis e reparos.",
-    url: "https://abpinturas.pt/",
-    siteName: "AB Pinturas",
+      "Serviços profissionais de remodelação, pintura e manutenção no Porto. Soluções completas para casas, empresas e condomínios.",
+    url: "https://renobric.pt/",
+    siteName: "Renobric",
     images: [
       {
-        url: "/images/ab.png",
+        url: "/images/logo.png",
         width: 1200,
         height: 630,
-        alt: "Logo AB Pinturas",
+        alt: "Logo Renobric",
       },
     ],
     locale: "pt_PT",
@@ -45,16 +46,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AB Pinturas e Serviços - Porto",
+    title: "Renobric - Remodelações e Pinturas no Porto",
     description:
-      "Profissionais em pintura residencial e comercial em Porto. Qualidade e agilidade em cada serviço.",
-    images: ["/images/ab.png"],
+      "A Renobric oferece serviços de pintura, remodelações e manutenção em todo o Porto. Qualidade, confiança e excelência em cada projeto.",
+    images: ["/images/logo.png"],
   },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
   },
-  metadataBase: new URL("https://abpinturas.pt/"),
+  metadataBase: new URL("https://renobric.pt/"),
 };
 
 export default function RootLayout({

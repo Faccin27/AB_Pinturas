@@ -18,12 +18,12 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Image
                 src="/images/logo.png"
-                alt="AB Pinturas e Serviços"
+                alt="Renobric"
                 width={60}
                 height={60}
-                className="h-12 w-auto"
+                className="h-12 w-auto rounded-full"
               />
-              <span className="font-bold text-xl">AB Pinturas</span>
+              <span className="font-bold text-xl">Renobric</span>
             </Link>
             <p className="text-white/80 mb-4">
               Serviços de qualidade em pintura residencial, comercial e montagem
@@ -31,7 +31,7 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               <Link
-                href="https://www.instagram.com/ab_pinturaseservicos.pt/"
+                href="https://www.instagram.com/renobricsolucoes?igsh=MXhiZm9veGMwZDZpdg=="
                 className="text-white/80 hover:text-white transition-colors"
               >
                 <Instagram className="h-5 w-5" />
@@ -158,8 +158,8 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-white/80" />
-                <a href="mailto:Abpinturasportugal@gmail.com">
-                  <span>Abpinturasportugal@gmail.com</span>
+                <a href="mailto:renobricsolucoes@gmail.com">
+                  <span>renobricsolucoes@gmail.com</span>
                 </a>
               </li>
             </ul>
@@ -170,7 +170,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-white/80 text-sm">
-            © {new Date().getFullYear()} AB Pinturas e Serviços. Todos os
+            © {new Date().getFullYear()} Renobric. Todos os
             direitos reservados.
           </p>
           <div className="flex gap-6">

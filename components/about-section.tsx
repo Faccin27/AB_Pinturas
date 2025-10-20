@@ -8,12 +8,13 @@ export function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-              Sobre a AB Pinturas e Serviços
+              Sobre a Renobric
             </h2>
             <p className="text-muted-foreground mb-6">
-              Somos uma empresa especializada em serviços de pintura residencial
-              e comercial, com foco na qualidade e satisfação dos nossos
-              clientes. Nossa equipe é formada por profissionais experientes e
+              Somos uma empresa especializada em serviços de pintura
+              residenciais e comerciais além da remodelação de qualidade para
+              seu local, com foco na qualidade e satisfação dos nossos clientes.
+              Nossa equipe é formada por profissionais experientes e
               comprometidos com a excelência em cada projeto.
             </p>
 
@@ -62,7 +63,7 @@ export function AboutSection() {
                   </p>
                 </div>
               </div>
-              <div className="flex justify-center scale-150 pt-16 hover:opacity-90 transition-all duration-500 hover:scale-[155%]">
+              {/* <div className="flex justify-center scale-150 pt-16 hover:opacity-90 transition-all duration-500 hover:scale-[155%]">
                 {" "}
                 <a
                   target="_blank"
@@ -73,7 +74,7 @@ export function AboutSection() {
                     alt=""
                   />
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -83,7 +84,7 @@ export function AboutSection() {
             <div className="relative rounded-xl overflow-hidden">
               <Image
                 src="/images/ab-Photoroom.png"
-                alt="AB Pinturas e Serviços"
+                alt="Renobric"
                 width={600}
                 height={600}
                 className="w-full h-auto"

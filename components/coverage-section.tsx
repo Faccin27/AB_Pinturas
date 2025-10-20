@@ -137,10 +137,11 @@ export function CoverageSection() {
             </div>
 
             <p className="text-muted-foreground text-lg mb-8">
-              Garantimos que nossos serviços de pintura e montagem cheguem até
-              você onde quer que esteja. Seja em cidades grandes ou pequenas,
-              estamos sempre prontos para oferecer a melhor experiência e
-              soluções personalizadas para suas necessidades!
+              Garantimos que nossos serviços de remodelação, pintura e montagem
+              cheguem até você onde quer que esteja. Seja em cidades grandes ou
+              pequenas, estamos sempre prontos para oferecer a melhor
+              experiência e soluções personalizadas para transformar o seu
+              espaço com qualidade e confiança!
             </p>
 
             <div className="grid grid-cols-2 gap-3 mb-8">

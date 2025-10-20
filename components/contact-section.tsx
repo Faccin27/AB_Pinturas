@@ -118,9 +118,9 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <a href="mailto:Abpinturasportugal@gmail.com">
+                    <a href="mailto:renobricsolucoes@gmail.com">
                       <p className="text-muted-foreground hover:text-primary hover:font-bold transition-all duration-200">
-                        Abpinturasportugal@gmail.com
+                        renobricsolucoes@gmail.com
                       </p>
                     </a>
                   </div>
@@ -132,9 +132,9 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Instagram</p>
-                    <a href="https://www.instagram.com/ab_pinturaseservicos.pt/">
+                    <a href="https://www.instagram.com/renobricsolucoes?igsh=MXhiZm9veGMwZDZpdg==">
                       <p className="text-muted-foreground hover:text-primary hover:font-bold transition-all duration-200">
-                        @ab_pinturaseservicos.pt
+                        @renobricsolucoes
                       </p>
                     </a>
                   </div>
