@@ -28,7 +28,7 @@ const galleryItems = [
   },
   {
     id: 7,
-    src: "/images/imoveis.png",
+    src: "/images/montagem.jpg",
     alt: "Montagem de móveis",
     title: "Montagem de Móveis",
     description:
