@@ -18,7 +18,7 @@ const services = [
     id: 1,
     title: "Pinturas em Geral",
     description:
-      "Transformamos sua casa com cores que combinam com seu estilo e personalidade.",
+      "Transformamos o seu espaço com cores que combinam com seu estilo e personalidade.",
     icon: Paintbrush,
     image: "/images/p2.png",
   },
@@ -32,12 +32,13 @@ const services = [
   },
   {
     id: 3,
-    title: "Acabamentos Especiais",
+    title: "Remodelações",
     description:
-      "Fazemos cada minimo detalhe, para que seu espaço seja digno de um bom cliente",
+      "Transformamos o seu espaço com remodelações completas e personalizadas, garantindo qualidade, funcionalidade e um acabamento impecável.",
     icon: Hammer,
-    image: "/images/pintura.png",
+    image: "/images/remodelacoes.jpg",
   },
+  
 
 ];
 

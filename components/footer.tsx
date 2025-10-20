@@ -26,7 +26,7 @@ export function Footer() {
               <span className="font-bold text-xl">Renobric</span>
             </Link>
             <p className="text-white/80 mb-4">
-              Serviços de qualidade em pintura residencial, comercial e montagem
+              Serviços de qualidade em pinturas em geral, remodelações em geral e montagem
               de móveis.
             </p>
             <div className="flex gap-4">
@@ -63,7 +63,7 @@ export function Footer() {
                   href="#serviços"
                   className="text-white/80 hover:text-white transition-colors"
                 >
-                  Pintura Residencial
+                  Pinturas em geral
                 </Link>
               </li>
               <li>
@@ -71,7 +71,7 @@ export function Footer() {
                   href="serviços"
                   className="text-white/80 hover:text-white transition-colors"
                 >
-                  Pintura Comercial
+                  Remodelações em geral
                 </Link>
               </li>
               <li>
@@ -152,8 +152,12 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-white/80" />
-                <a href="https://wa.me/351935986208?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">
-                <span>935 986 208</span>
+                <a
+                  href="https://wa.me/351935986208?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>935 986 208</span>
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -170,8 +174,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-white/80 text-sm">
-            © {new Date().getFullYear()} Renobric. Todos os
-            direitos reservados.
+            © {new Date().getFullYear()} Renobric. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
             <Link
