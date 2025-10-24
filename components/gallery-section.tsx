@@ -10,7 +10,7 @@ const galleryItems = [
     src: "/images/p2.png",
     alt: "Pinturas em geral",
     title: "Pinturas em geral",
-    description: "Acabamento de qualidade para sua casa ou comércio.",
+    description: "Acabamentos de pinturas para sua área residencial ou comercial",
   },
   {
     id: 5,

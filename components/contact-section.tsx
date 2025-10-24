@@ -215,15 +215,15 @@ export function ContactSection() {
                   required
                 >
                   <option value="">Selecione um serviço</option>
-                  <option value="pintura-residencial">
-                    Pintura Residencial
+                  <option value="pintura-geral">
+                    Pinturas em geral
                   </option>
-                  <option value="pintura-comercial">Pintura Comercial</option>
+                  <option value="remodelacao-banho">Remodelação casa de banho</option>
                   <option value="montagem-moveis">Montagem de Móveis</option>
                   <option value="desmontagem-moveis">
                     Desmontagem de Móveis
                   </option>
-                  <option value="pequenos-reparos">Pequenos Reparos</option>
+                  <option value="remodelacao-geral">Remodelações em geral</option>
                   <option value="outros">Outros</option>
                 </select>
               </div>
